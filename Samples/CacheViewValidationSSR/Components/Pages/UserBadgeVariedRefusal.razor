@@ -1,0 +1,11 @@
+@page "/user-badge/refusal-varied"
+
+<PageTitle>UserBadge refusal with vary-by</PageTitle>
+
+<h1>UserBadge refusal with vary-by</h1>
+
+<p>This route should still throw an <code>InvalidOperationException</code> naming <code>UserBadge</code>. No vary-by dimension can satisfy its unconditional refusal policy.</p>
+
+<CacheView VaryByUser="true" VaryByQuery="*" VaryByCookie="price-selection">
+    <UserBadge />
+</CacheView>

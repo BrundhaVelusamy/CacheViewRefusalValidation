@@ -1,0 +1,14 @@
+@page "/nested/refusal"
+
+<PageTitle>Nested CacheView refusal</PageTitle>
+
+<h1>Nested CacheView refusal</h1>
+
+<p>This route intentionally nests one <code>CacheView</code> inside another. It should throw an <code>InvalidOperationException</code> explaining that nesting isn't supported.</p>
+
+<CacheView>
+    <p>Outer cached content.</p>
+    <CacheView>
+        <p>Inner cached content.</p>
+    </CacheView>
+</CacheView>

@@ -1,0 +1,30 @@
+﻿<script type="module" src="@Assets["Components/Layout/NavMenu.razor.js"]"></script>
+
+<div class="top-row ps-3 navbar navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="">CacheViewValidationSSR</a>
+    </div>
+</div>
+
+<input type="checkbox" title="Navigation menu" class="navbar-toggler" />
+
+<div id="nav-scrollable" class="nav-scrollable">
+    <nav class="nav flex-column">
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Home
+            </NavLink>
+        </div>
+
+        <div class="nav-item px-3"><NavLink class="nav-link" href="authorize/refusal">Authorize refusal</NavLink></div>
+        <div class="nav-item px-3"><NavLink class="nav-link" href="authorize/fixed">Authorize fixed</NavLink></div>
+        <div class="nav-item px-3"><NavLink class="nav-link" href="quickgrid/refusal">QuickGrid refusal</NavLink></div>
+        <div class="nav-item px-3"><NavLink class="nav-link" href="quickgrid/fixed">QuickGrid fixed</NavLink></div>
+        <div class="nav-item px-3"><NavLink class="nav-link" href="user-badge/refusal">UserBadge refusal</NavLink></div>
+        <div class="nav-item px-3"><NavLink class="nav-link" href="user-badge/fixed">UserBadge fixed</NavLink></div>
+        <div class="nav-item px-3"><NavLink class="nav-link" href="price/live">PricePanel live</NavLink></div>
+        <div class="nav-item px-3"><NavLink class="nav-link" href="price/cached">PricePanel cached</NavLink></div>
+        <div class="nav-item px-3"><NavLink class="nav-link" href="nested/refusal">Nested refusal</NavLink></div>
+    </nav>
+</div>
+

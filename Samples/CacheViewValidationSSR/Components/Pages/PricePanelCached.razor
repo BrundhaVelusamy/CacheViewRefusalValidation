@@ -1,0 +1,22 @@
+@page "/price/cached"
+
+<PageTitle>PricePanel cookie-vary cache reuse</PageTitle>
+
+<h1>PricePanel cookie-vary cache reuse</h1>
+
+<p>The cache boundary varies by <code>price-selection</code>. Refresh this page: both IDs should remain stable for the selected cookie. Changing the selection should create a different entry.</p>
+<p><a href="/price/select/standard">Use standard pricing</a> | <a href="/price/select/premium">Use premium pricing</a></p>
+
+<CacheView VaryByCookie="price-selection" ExpiresAfter="TimeSpan.FromMinutes(5)">
+    <p>Cache-entry ID: <code class="cache-entry-id">@cacheEntryId</code></p>
+    <PricePanel Selection="@PriceSelection" />
+</CacheView>
+
+@code {
+    [CascadingParameter]
+    private HttpContext? HttpContext { get; set; }
+
+    private readonly string cacheEntryId = Guid.NewGuid().ToString();
+
+    private string PriceSelection => HttpContext?.Request.Cookies["price-selection"] ?? "standard";
+}

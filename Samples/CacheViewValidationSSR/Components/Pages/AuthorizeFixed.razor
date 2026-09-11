@@ -1,0 +1,19 @@
+@page "/authorize/fixed"
+
+<PageTitle>AuthorizeView repaired</PageTitle>
+
+<h1>AuthorizeView repaired</h1>
+
+<p>This cache boundary varies by user, so <code>AuthorizeView</code> is safe to render.</p>
+<p><a class="btn btn-primary" href="/auth/sign-in">Sign in as the test user</a> <a class="btn btn-secondary" href="/auth/sign-out">Sign out</a></p>
+
+<CacheView VaryByUser="true">
+    <AuthorizeView>
+        <Authorized Context="authState">
+            <div class="alert alert-success">Signed in as <strong>@authState.User.Identity?.Name</strong>.</div>
+        </Authorized>
+        <NotAuthorized>
+            <div class="alert alert-secondary">The request is anonymous.</div>
+        </NotAuthorized>
+    </AuthorizeView>
+</CacheView>

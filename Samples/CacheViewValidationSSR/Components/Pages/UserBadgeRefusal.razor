@@ -1,0 +1,11 @@
+@page "/user-badge/refusal"
+
+<PageTitle>UserBadge refusal</PageTitle>
+
+<h1>UserBadge refusal without vary-by</h1>
+
+<p>This route should throw an <code>InvalidOperationException</code> naming <code>UserBadge</code>. The component has an unconditional refusal policy.</p>
+
+<CacheView>
+    <UserBadge />
+</CacheView>

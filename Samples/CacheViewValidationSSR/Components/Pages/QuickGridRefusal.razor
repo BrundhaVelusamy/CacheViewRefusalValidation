@@ -1,0 +1,25 @@
+@page "/quickgrid/refusal"
+
+<PageTitle>QuickGrid refusal</PageTitle>
+
+<h1>QuickGrid refusal</h1>
+
+<p>This route intentionally omits <code>VaryByQuery</code>. It should throw an <code>InvalidOperationException</code> that names <code>QuickGrid</code> and explains how to fix the page.</p>
+
+<CacheView>
+    <QuickGrid Items="products">
+        <PropertyColumn Property="@(product => product.Name)" Sortable="true" />
+        <PropertyColumn Property="@(product => product.Price)" Format="C" Sortable="true" />
+    </QuickGrid>
+</CacheView>
+
+@code {
+    private readonly IQueryable<Product> products = new[]
+    {
+        new Product("Notebook", 4.50m),
+        new Product("Pen", 1.25m),
+        new Product("Backpack", 39.00m)
+    }.AsQueryable();
+
+    private sealed record Product(string Name, decimal Price);
+}

@@ -1,0 +1,46 @@
+﻿@page "/"
+
+<PageTitle>CacheView refusal validation</PageTitle>
+
+<h1>CacheView refusal validation</h1>
+
+<p>This static SSR sample isolates each .NET 11 <code>CacheView</code> refusal or conditional behavior on its own route.</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Component</th>
+            <th>Intentional refusal</th>
+            <th>Resolved behavior</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>AuthorizeView</code></td>
+            <td><a href="/authorize/refusal">No user vary-by</a></td>
+            <td><a href="/authorize/fixed">Vary by user</a></td>
+        </tr>
+        <tr>
+            <td><code>QuickGrid</code></td>
+            <td><a href="/quickgrid/refusal">No query vary-by</a></td>
+            <td><a href="/quickgrid/fixed?sort=name&amp;direction=ascending&amp;page=1">Vary by query</a></td>
+        </tr>
+        <tr>
+            <td><code>UserBadge</code></td>
+            <td><a href="/user-badge/refusal">No vary-by</a> / <a href="/user-badge/refusal-varied">With vary-by</a></td>
+            <td><a href="/user-badge/fixed">Outside the boundary</a></td>
+        </tr>
+        <tr>
+            <td><code>PricePanel</code></td>
+            <td><a href="/price/live">Live rerender without cookie vary-by</a></td>
+            <td><a href="/price/cached">Cache reuse with cookie vary-by</a></td>
+        </tr>
+        <tr>
+            <td>Nested <code>CacheView</code></td>
+            <td><a href="/nested/refusal">Nested boundary</a></td>
+            <td>Move the inner boundary outside the outer boundary.</td>
+        </tr>
+    </tbody>
+</table>
+
+<p>Refusal routes intentionally produce server errors. Read each exception message and verify that it names the component and gives an actionable correction.</p>

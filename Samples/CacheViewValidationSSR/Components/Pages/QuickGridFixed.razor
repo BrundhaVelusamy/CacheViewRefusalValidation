@@ -1,0 +1,26 @@
+@page "/quickgrid/fixed"
+
+<PageTitle>QuickGrid repaired</PageTitle>
+
+<h1>QuickGrid repaired</h1>
+
+<p>This cache boundary varies by all query parameters.</p>
+
+<CacheView VaryByQuery="*">
+    <QuickGrid Items="products">
+        <PropertyColumn Property="@(product => product.Name)" Sortable="true" />
+        <PropertyColumn Property="@(product => product.Price)" Format="C" Sortable="true" />
+    </QuickGrid>
+</CacheView>
+
+@code {
+
+    private readonly IQueryable<Product> products = new[]
+    {
+        new Product("Notebook", 4.50m),
+        new Product("Pen", 1.25m),
+        new Product("Backpack", 39.00m)
+    }.AsQueryable();
+
+    private sealed record Product(string Name, decimal Price);
+}

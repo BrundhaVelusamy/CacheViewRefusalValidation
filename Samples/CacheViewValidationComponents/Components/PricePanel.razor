@@ -1,0 +1,20 @@
+@attribute [CacheBehavior(CacheBehavior.Rerender)]
+@attribute [CacheCondition(CacheVaryBy.Cookie)]
+
+<div class="alert alert-info">
+    <strong>Price selection:</strong> @Selection
+    <br />
+    <strong>Lifecycle ID:</strong> <code class="lifecycle-id">@lifecycleId</code>
+</div>
+
+@code {
+    [Parameter]
+    public string Selection { get; set; } = "standard";
+
+    private string lifecycleId = string.Empty;
+
+    protected override void OnInitialized()
+    {
+        lifecycleId = Guid.NewGuid().ToString();
+    }
+}

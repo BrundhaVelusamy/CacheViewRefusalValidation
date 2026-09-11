@@ -1,0 +1,8 @@
+@attribute [CacheBehavior(CacheBehavior.Throw)]
+
+<span class="badge text-bg-primary">User: @UserName</span>
+
+@code {
+    [Parameter]
+    public string UserName { get; set; } = "Test User";
+}

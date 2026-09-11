@@ -1,0 +1,21 @@
+@page "/price/live"
+
+<PageTitle>PricePanel live rerender</PageTitle>
+
+<h1>PricePanel live rerender</h1>
+
+<p>The cache boundary does not vary by the required cookie. Refresh this page: the cache-entry ID should remain stable while the lifecycle ID changes on every request.</p>
+
+<CacheView ExpiresAfter="TimeSpan.FromMinutes(5)">
+    <p>Cache-entry ID: <code class="cache-entry-id">@cacheEntryId</code></p>
+    <PricePanel Selection="@PriceSelection" />
+</CacheView>
+
+@code {
+    [CascadingParameter]
+    private HttpContext? HttpContext { get; set; }
+
+    private readonly string cacheEntryId = Guid.NewGuid().ToString();
+
+    private string PriceSelection => HttpContext?.Request.Cookies["price-selection"] ?? "standard";
+}
