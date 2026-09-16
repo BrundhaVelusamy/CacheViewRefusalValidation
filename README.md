@@ -65,4 +65,7 @@ Expected URL:
 
 ```text
 https://localhost:5054
+
+https://localhost:7019
 ```
+Use the URL displayed by dotnet run if different.
